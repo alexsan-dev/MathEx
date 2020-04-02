@@ -1,11 +1,10 @@
-import javax.swing.*;
+//import javax.swing.*;
 
-public class MathEx {
+public class MathX {
   public static void main(String[] args) {
     // PRUEBAS
-    System.out.print(Maths.inverse(5));
+    System.out.print(Maths.root(5, 3));
 
-    // // CONFIGURAR ESTILO DE LOS FRAMES
     // try {
     // UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
     // } catch (ClassNotFoundException | InstantiationException |
@@ -15,10 +14,6 @@ public class MathEx {
     // }
 
     // // CREAR VENTANA Y MENU PRINCIPAL
-    // JFrame window = new Window(800, 600);
-    // JPanel mainMenu = new MainMenu();
-
-    // /// AGREGAR MENU A LA VENTANA
-    // window.add(mainMenu);
+    // new MainMenu(800, 600);
   }
 }

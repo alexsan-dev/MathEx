@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - MathX",
+      "request": "launch",
+      "mainClass": "MathX",
+      "projectName": "proyecto1_9065d542"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - MathEx",
       "request": "launch",
       "mainClass": "MathEx",

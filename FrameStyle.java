@@ -1,11 +1,12 @@
+import java.awt.*;
 import javax.swing.*;
-import java.awt.Color;
-import javax.swing.UnsupportedLookAndFeelException;
 
-public class Window extends JFrame {
-  public Window(int width, int height) {
+public class FrameStyle extends JFrame {
+  private static final long serialVersionUID = 1L;
+
+  public FrameStyle() {
     // AGREGAR NOMBRE
-    super("MathEx - Java Calculator");
+    super("MathX - Java Calculator");
 
     // AGREGAR ICONO Y COLOR
     setIconImage(new ImageIcon("assets/icon.png").getImage());
@@ -13,7 +14,6 @@ public class Window extends JFrame {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     // AGREGAR DIMENSIONES
-    setSize(width, height);
     setResizable(false);
     setVisible(true);
   }
