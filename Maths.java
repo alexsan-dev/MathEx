@@ -48,16 +48,16 @@ public class Maths {
   }
 
   // POTENCIA
-  public static long pow(double a, int n) {
+  public static double pow(double x, int n) {
     if (n == 0)
       return 1;
     else {
       // VARIABLE DE SALIDA
-      long out = (long) a;
+      double out = x;
 
       // RECORRER A N VECES
       for (int powIndex = 0; powIndex < n - 1; powIndex++)
-        out *= a;
+        out *= x;
 
       // RETORNAR SALIDA
       return out;
@@ -80,27 +80,6 @@ public class Maths {
     return divs;
   }
 
-  public static double root(double x, int a) {
-    Double count = 1.0;
-
-    for (int n = 1; n < 27; n++) {
-      count += (pow(x - 1, n) / fact(n));
-
-      double added = 1;
-      for (int m = 0; m < n; m++) {
-        double res = (double) 1 / a;
-        added *= res - m;
-      }
-
-      double ref = (double) 1 / a;
-      count *= added;
-      count *= pow(x, ref - n);
-    }
-
-    return count;
-  }
-
-  // CALCULAR INVERSO
   public static double inverse(Double a) {
     return (double) (1 / a);
   }
@@ -112,9 +91,9 @@ public class Maths {
 
   // ========== ALGEBRA ==========
   // CALCULAR ECUACIÓN CUADRÁTICA
-  public static double[] quadEq(int a, int b, int c) {
+  public static Double[] quadEq(int a, int b, int c) {
     // VARIABLE DE SALIDA
-    double[] out = new double[2];
+    Double[] out = new Double[2];
 
     // CALCULAR CON ECUACIÓN POSITIVA
     out[0] = (-b + sqrt((int) pow(b, 2) - (4 * a * c))) / 2 * a;
@@ -165,10 +144,30 @@ public class Maths {
 
     double temp = 0;
 
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 100; i++)
       temp += pow(-1, i) * (pow(a, (2 * i) + 1) / fact((2 * i) + 1));
-    }
 
     return temp;
+  }
+
+  public static double cos(double a) {
+    if (a == Double.NEGATIVE_INFINITY || !(a < Double.POSITIVE_INFINITY)) {
+      return Double.NaN;
+    }
+
+    double temp = 0;
+
+    for (int i = 0; i < 100; i++)
+      temp += pow(-1, i) * (pow(a, (2 * i)) / fact((2 * i)));
+
+    return temp;
+  }
+
+  public static double tan(double a) {
+    if (a == Double.NEGATIVE_INFINITY || !(a < Double.POSITIVE_INFINITY)) {
+      return Double.NaN;
+    }
+
+    return sin(a) / cos(a);
   }
 }

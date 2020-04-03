@@ -43,6 +43,12 @@ public class MainMenu extends FrameStyle {
       }
     });
 
+    trigonometric.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        new Trigonometric();
+      }
+    });
+
     // EVENTO DE ALGEBRA
   }
 }

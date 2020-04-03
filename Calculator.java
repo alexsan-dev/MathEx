@@ -54,7 +54,7 @@ public class Calculator extends FrameStyle {
         out = Maths.sqrt(x0);
         break;
       case 5:
-        out = Maths.fact(Maths.parseInt(x0));
+        out = (double) Maths.fact(Maths.parseInt(x0));
         break;
       case 6:
         out = (double) Maths.pow(x0, Maths.parseInt(x1));

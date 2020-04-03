@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 public class Algebra extends FrameStyle {
   private static final long serialVersionUID = 1L;
@@ -7,7 +8,7 @@ public class Algebra extends FrameStyle {
   public Algebra() {
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     setName("MathX - Algebra");
-    setSize(300, 200);
+    setSize(500, 200);
     setLayout(new GridLayout(2, 3));
 
     // COMPONENTES
@@ -22,6 +23,24 @@ public class Algebra extends FrameStyle {
     add(binomio);
     add(quadSum);
     add(cubic);
+
+    quadEquation.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        new QuadEquation();
+      }
+    });
+
+    binomio.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        new QuadBinomial();
+      }
+    });
+
+    quadSum.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        new QuadDifference();
+      }
+    });
   }
 
 }
