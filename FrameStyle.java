@@ -17,4 +17,8 @@ public class FrameStyle extends JFrame {
     setResizable(false);
     setVisible(true);
   }
+
+  public FrameStyle(String name) {
+    super(name);
+  }
 }

@@ -7,7 +7,7 @@ public class MainMenu extends FrameStyle {
 
   public MainMenu(int width, int height) {
     // ASIGNAR TAMAÑO
-    setSize(800, 600);
+    setSize(400, 400);
 
     // CREAR LAYOUT
     setLayout(new GridLayout(3, 3));
@@ -46,6 +46,17 @@ public class MainMenu extends FrameStyle {
     trigonometric.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {
         new Trigonometric();
+      }
+    });
+
+    calculus.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        new Calculus();
+      }
+    });
+    linear.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        new Matrix();
       }
     });
 

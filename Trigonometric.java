@@ -8,7 +8,7 @@ public class Trigonometric extends FrameStyle {
   public Trigonometric() {
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     setName("MathX - Aritmética");
-    setSize(350, 250);
+    setSize(400, 250);
     setLayout(new GridLayout(4, 1));
 
     // COMPONENTES
@@ -46,16 +46,25 @@ public class Trigonometric extends FrameStyle {
     tanPanel.add(tanRes);
 
     JPanel archPanel = new JPanel();
-    JLabel archT = new JLabel(" longitud ");
+    JLabel archT = new JLabel(" angulo ");
     JTextField archF = new JTextField();
     JLabel archR = new JLabel(" radio ");
     JTextField archRf = new JTextField();
+    ButtonGroup G = new ButtonGroup();
+    JRadioButton deg = new JRadioButton("D");
+    JRadioButton rad = new JRadioButton("R");
+
+    G.add(deg);
+    G.add(rad);
+
     JButton calcArch = new JButton("VER");
-    archPanel.setLayout(new GridLayout(1, 5));
+    archPanel.setLayout(new GridLayout(1, 6));
     archPanel.add(archT);
     archPanel.add(archF);
     archPanel.add(archR);
     archPanel.add(archRf);
+    archPanel.add(deg);
+    archPanel.add(rad);
     archPanel.add(calcArch);
 
     add(senPanel);
@@ -81,6 +90,21 @@ public class Trigonometric extends FrameStyle {
       public void actionPerformed(ActionEvent ev) {
         Double x = Double.parseDouble(tanF.getText());
         tanRes.setText(" = " + Maths.tan(x));
+      }
+    });
+
+    calcArch.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+
+        boolean mode = rad.isSelected();
+        Double angle = Double.parseDouble(archF.getText());
+        Double tempAngle = mode ? angle : angle * (Maths.PI / 180);
+        Double graphAngle = mode ? angle * (180 / Maths.PI) : angle;
+
+        Double radius = Double.parseDouble(archRf.getText());
+
+        Double archLength = Maths.archLength(tempAngle, radius);
+        new ArchFrame(Maths.parseInt(graphAngle), Maths.parseInt(radius), archLength);
       }
     });
 

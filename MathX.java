@@ -3,7 +3,9 @@ import javax.swing.*;
 public class MathX {
   public static void main(String[] args) {
     // PRUEBAS
-    // System.out.print(Maths.tan(Math.PI));
+    // int[][] mat = { { 3, 2, 5 }, { 2, 1, 7 }, { 1, 5, 6 } };
+
+    // System.out.print(Maths.determinantOfMatrix(mat, 2));
 
     try {
       UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

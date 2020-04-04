@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+
 import java.awt.event.*;
 
 public class Calculator extends FrameStyle {
@@ -8,7 +9,7 @@ public class Calculator extends FrameStyle {
   private Double x1 = 0.0;
   private Boolean mode = true;
   private int action = 0;
-  private JTextArea view;
+  private JLabel view;
 
   private void addEvent(JButton btn, Double value) {
     btn.addActionListener(new ActionListener() {
@@ -54,10 +55,10 @@ public class Calculator extends FrameStyle {
         out = Maths.sqrt(x0);
         break;
       case 5:
-        out = (double) Maths.fact(Maths.parseInt(x0));
+        out = Maths.fact(Maths.parseInt(x0));
         break;
       case 6:
-        out = (double) Maths.pow(x0, Maths.parseInt(x1));
+        out = Maths.pow(x0, Maths.parseInt(x1));
         break;
       case 7:
         out = Maths.inverse(x0);
@@ -71,22 +72,31 @@ public class Calculator extends FrameStyle {
 
     view.setText(out.toString());
     x0 = out;
+    mode = true;
   }
 
   public Calculator() {
     // CONFIGURAR FRAME
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     setName("MathX - Aritmética");
-    setSize(350, 450);
-    setLayout(new GridLayout(2, 1));
+    setSize(300, 400);
+    setLayout(new GridBagLayout());
+    GridBagConstraints cMain = new GridBagConstraints();
+    cMain.gridx = 0;
+    cMain.gridy = 0;
+    cMain.fill = GridBagConstraints.BOTH;
+    cMain.weighty = 1.0;
+    cMain.weightx = 1.0;
 
     // CONFIGURAR PANEL
     JPanel panel = new JPanel();
-    panel.setLayout(new GridLayout(5, 5));
+    panel.setLayout(new GridBagLayout());
+    GridBagConstraints c = new GridBagConstraints();
 
     // CREAR COMPONENTES
-    view = new JTextArea(1, 0);
+    view = new JLabel();
     view.setFont(view.getFont().deriveFont(24f));
+    view.setHorizontalAlignment(SwingConstants.CENTER);
     view.setText("0.0");
 
     JButton one = new JButton("1");
@@ -114,31 +124,85 @@ public class Calculator extends FrameStyle {
     JButton equals = new JButton("=");
 
     // AGREGAR COMPONENTES
-    panel.add(one);
-    panel.add(two);
-    panel.add(three);
-    panel.add(four);
-    panel.add(five);
-    panel.add(six);
-    panel.add(seven);
-    panel.add(eight);
-    panel.add(nine);
-    panel.add(zero);
-    panel.add(plus);
-    panel.add(minus);
-    panel.add(multiply);
-    panel.add(div);
-    panel.add(root);
-    panel.add(pow);
-    panel.add(fact);
-    panel.add(inverse);
-    panel.add(negative);
-    panel.add(clear);
-    panel.add(nRoot);
-    panel.add(favorite);
-    panel.add(equals);
+    c.gridx = 0;
+    c.gridy = 0;
+    c.fill = GridBagConstraints.BOTH;
+    c.weighty = 1.0;
+    c.weightx = 1.0;
+    panel.add(one, c);
 
-    // EVENTOS
+    c.gridx = 1;
+    panel.add(two, c);
+
+    c.gridx = 2;
+    panel.add(three, c);
+
+    c.gridx = 3;
+    panel.add(four, c);
+
+    c.gridx = 4;
+    panel.add(five, c);
+
+    c.gridx = 0;
+    c.gridy = 1;
+    panel.add(six, c);
+
+    c.gridx = 1;
+    panel.add(seven, c);
+
+    c.gridx = 2;
+    panel.add(eight, c);
+
+    c.gridx = 3;
+    panel.add(nine, c);
+
+    c.gridx = 4;
+    panel.add(zero, c);
+
+    c.gridx = 0;
+    c.gridy = 2;
+    panel.add(plus, c);
+
+    c.gridx = 1;
+    panel.add(minus, c);
+
+    c.gridx = 2;
+    panel.add(multiply, c);
+
+    c.gridx = 3;
+    panel.add(div, c);
+
+    c.gridx = 4;
+    panel.add(root, c);
+
+    c.gridx = 0;
+    c.gridy = 3;
+    panel.add(pow, c);
+
+    c.gridx = 1;
+    panel.add(fact, c);
+
+    c.gridx = 2;
+    panel.add(inverse, c);
+
+    c.gridx = 3;
+    panel.add(negative, c);
+
+    c.gridx = 4;
+    panel.add(nRoot, c);
+
+    c.gridx = 0;
+    c.gridy = 4;
+    panel.add(favorite, c);
+
+    c.gridx = 1;
+    c.gridwidth = 2;
+    panel.add(clear, c);
+
+    c.gridx = 3;
+    c.gridwidth = 2;
+    panel.add(equals, c);
+
     addEvent(one, 1.0);
     addEvent(two, 2.0);
     addEvent(three, 3.0);
@@ -174,7 +238,9 @@ public class Calculator extends FrameStyle {
       }
     });
 
-    add(view);
-    add(panel);
+    add(view, cMain);
+
+    cMain.gridy = 1;
+    add(panel, cMain);
   }
 }
