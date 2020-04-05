@@ -5,10 +5,10 @@ public class MathX {
     // PRUEBAS
     // int[][] mat = { { 3, 2, 5 }, { 2, 1, 7 }, { 1, 5, 6 } };
 
-    System.out.print(Maths.root(5, 4));
+    // System.out.print(Maths.root(5, 4));
 
     try {
-      UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
         | UnsupportedLookAndFeelException e) {
       e.printStackTrace();

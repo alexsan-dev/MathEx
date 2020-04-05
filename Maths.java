@@ -95,7 +95,7 @@ public class Maths {
     double start = 0, end = n;
 
     // PERDICIÓN DE LOS DECIMALES
-    double e = 0.0000001;
+    double e = 0.000000001;
 
     // SUMAR HASTA ENCONTRAR
     while (true) {
@@ -176,16 +176,22 @@ public class Maths {
     return out;
   }
 
-  public static int[] quadDif(int a, int b) {
+  public static double[] quadDif(double a, double b) {
     // CUADRADOS
-    int aRoot = parseInt(sqrt(a));
-    int cRoot = parseInt(sqrt(b));
+    double aRoot = sqrt(a);
+    double cRoot = sqrt(b);
 
     // VALOR POR DEFECTO
-    int[] out = { aRoot, cRoot };
+    double[] out = { aRoot, cRoot };
 
     // RETORNAR RAÍCES
     return out;
+  }
+
+  public static double[] cubicDif(double a, double b) {
+    double[] out = { root(a, 3), root(b, 3), pow(root(a, 3), 2), (root(a, 3) * root(b, 3)), pow(root(b, 3), 2) };
+    return out;
+
   }
 
   // ============== TRIGONOMÉTRICAS ==============

@@ -65,6 +65,9 @@ public class Calculator extends FrameStyle {
       case 8:
         out = Maths.negative(x0);
         break;
+      case 9:
+        out = Maths.root(x0, Maths.parseInt(x1));
+        break;
       default:
         out = 0.0;
     }
@@ -223,7 +226,7 @@ public class Calculator extends FrameStyle {
     addAction(pow, 6, false);
     addAction(inverse, 7, true);
     addAction(negative, 8, true);
-    addAction(nRoot, 9, true);
+    addAction(nRoot, 9, false);
 
     equals.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {

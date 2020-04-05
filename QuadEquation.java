@@ -14,34 +14,49 @@ public class QuadEquation extends FrameStyle {
     // COMPONENTES
 
     JTextField a = new JTextField();
-    JLabel x2 = new JLabel("x²");
-    JTextField b = new JTextField();
-    JLabel x = new JLabel("x");
-    JTextField c = new JTextField();
+    Font font = a.getFont().deriveFont(24f);
+    a.setFont(font);
 
-    JLabel x0 = new JLabel("x0 = ");
-    JTextField x0f = new JTextField();
-    JLabel x1 = new JLabel("x1 = ");
-    JTextField x1f = new JTextField();
+    JLabel x2 = new JLabel("x² + ");
+    x2.setFont(font);
+
+    JTextField b = new JTextField();
+    b.setFont(font);
+
+    JLabel x = new JLabel("x + ");
+    x.setFont(font);
+
+    JTextField c = new JTextField();
+    c.setFont(font)
+
+    JLabel result = new JLabel();
+    result.setHorizontalAlignment(SwingConstants.CENTER);
+    result.setVerticalAlignment(SwingConstants.CENTER);
+    result.setFont(font);
+    result.setOpaque(true);
+    result.setBackground(new Color(50, 50, 50));
+    result.setForeground(Color.white);
 
     JPanel mainline = new JPanel();
-    mainline.setLayout(new GridLayout(1, 5));
+    mainline.setLayout(new FlowLayout());
 
     JPanel secline = new JPanel();
-    secline.setLayout(new GridLayout(1, 4));
+    secline.setLayout(new FlowLayout());
 
     JButton calculate = new JButton("Calcular");
+    calculate.setFont(calculate.getFont().deriveFont(18f));
+    calculate.setBackground(new Color(21, 101, 192));
+    calculate.setForeground(Color.white);
 
-    secline.add(x0);
-    secline.add(x0f);
-    secline.add(x1);
-    secline.add(x1f);
+
 
     mainline.add(a);
     mainline.add(x2);
     mainline.add(b);
     mainline.add(x);
     mainline.add(c);
+
+    secline.add(result);
 
     add(mainline);
     add(secline);

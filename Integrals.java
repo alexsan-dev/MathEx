@@ -1,6 +1,5 @@
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 
 public class Integrals extends FrameStyle {
   private static final long serialVersionUID = 1L;
@@ -23,6 +22,6 @@ public class Integrals extends FrameStyle {
     panel.add(title1);
     panel.add(text1);
 
-    add(panel);
+    add(scrollPanel);
   }
 }

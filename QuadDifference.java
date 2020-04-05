@@ -41,10 +41,10 @@ public class QuadDifference extends FrameStyle {
 
     calculate.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {
-        int as = Integer.parseInt(a2.getText());
-        int bs = Integer.parseInt(b2.getText());
+        double as = Double.parseDouble(a2.getText());
+        double bs = Double.parseDouble(b2.getText());
 
-        int[] results = Maths.quadDif(as, bs);
+        double[] results = Maths.quadDif(as, bs);
 
         compose.setText("(" + results[0] + "-" + results[1] + ")" + "(" + results[0] + "+" + results[1] + ") = "
             + ((results[0] + results[1]) * (results[0] - results[1])));

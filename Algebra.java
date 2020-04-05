@@ -9,7 +9,7 @@ public class Algebra extends FrameStyle {
   public Algebra() {
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     setName("MathX - Algebra");
-    setSize(500, 200);
+    setSize(500, 100);
     setLayout(new GridLayout(2, 3));
 
     HistoryElement hElem = new HistoryElement(0, 2.1, new Date());
@@ -19,7 +19,7 @@ public class Algebra extends FrameStyle {
     final JButton quadEquation = new JButton("Cuadrática");
     final JButton eqSystem = new JButton("Sistema de ecuaciones");
     final JButton binomio = new JButton("Binomio cuadrado");
-    final JButton quadSum = new JButton("Suma de cuadrados");
+    final JButton quadSum = new JButton("Diferencia de cuadrados");
     final JButton cubic = new JButton("Suma y diferencia de cubos");
 
     add(quadEquation);
@@ -50,6 +50,12 @@ public class Algebra extends FrameStyle {
       public void actionPerformed(ActionEvent ev) {
         int dim = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa la dimension del sistema de ecuaciones"));
         new EquationSystem(dim);
+      }
+    });
+
+    cubic.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        new CubicDifference();
       }
     });
   }
