@@ -28,7 +28,33 @@ public class OMatrix extends FrameStyle {
     goAuto.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {
         int dim = Integer.parseInt(autoF.getText());
-        new AutoMatrix(dim);
+        double[][] defValues = new double[dim][dim];
+
+        new AutoMatrix(dim, defValues);
+      }
+    });
+
+    goManual.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        String[] textValues = manualF.getText().split(",");
+        double[] values = new double[textValues.length];
+        int dim = (int) Math.sqrt(textValues.length);
+        double[][] defValues = new double[dim][dim];
+        int asyncCount = 0;
+
+        System.out.println(textValues.length);
+
+        for (int i = 0; i < textValues.length; i++)
+          values[i] = Double.parseDouble(textValues[i]);
+
+        for (int i = 0; i < dim; i++) {
+          for (int j = 0; j < dim; j++) {
+            defValues[i][j] = values[asyncCount];
+            asyncCount++;
+          }
+        }
+
+        new AutoMatrix(dim, defValues);
       }
     });
   }

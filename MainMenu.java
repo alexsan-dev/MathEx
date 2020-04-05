@@ -19,7 +19,7 @@ public class MainMenu extends FrameStyle {
     JButton calculus = new JButton("Calculo");
     JButton linear = new JButton("Algebra Lineal");
     JButton favorites = new JButton("Favoritos");
-    JButton history = new JButton("Historial");
+    JButton historyBtn = new JButton("Historial");
 
     // ASIGNAR BOTONES
     add(arith);
@@ -28,7 +28,7 @@ public class MainMenu extends FrameStyle {
     add(calculus);
     add(linear);
     add(favorites);
-    add(history);
+    add(historyBtn);
 
     // EVENTO DE CALCULADORA
     arith.addActionListener(new ActionListener() {
@@ -54,12 +54,12 @@ public class MainMenu extends FrameStyle {
         new Calculus();
       }
     });
+
     linear.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {
         new Matrix();
       }
     });
 
-    // EVENTO DE ALGEBRA
   }
 }

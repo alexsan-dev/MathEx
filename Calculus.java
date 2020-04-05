@@ -23,5 +23,11 @@ public class Calculus extends FrameStyle {
         new Riemann();
       }
     });
+
+    integrals.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        new Integrals();
+      }
+    });
   }
 }

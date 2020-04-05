@@ -1,6 +1,5 @@
 import java.awt.*;
 import javax.swing.*;
-
 import java.awt.event.*;
 
 public class Calculator extends FrameStyle {
@@ -81,6 +80,7 @@ public class Calculator extends FrameStyle {
     setName("MathX - Aritmética");
     setSize(300, 400);
     setLayout(new GridBagLayout());
+
     GridBagConstraints cMain = new GridBagConstraints();
     cMain.gridx = 0;
     cMain.gridy = 0;

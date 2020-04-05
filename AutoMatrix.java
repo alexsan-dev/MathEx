@@ -17,7 +17,7 @@ public class AutoMatrix extends FrameStyle {
     }
   }
 
-  public AutoMatrix(int dim) {
+  public AutoMatrix(int dim, double[][] defValues) {
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     setSize(300, 200);
     setLayout(new GridLayout(1, 2));
@@ -47,6 +47,8 @@ public class AutoMatrix extends FrameStyle {
         JTextField ceil = new JTextField();
         ceil.setHorizontalAlignment(SwingConstants.CENTER);
         ceil.setFont(ceil.getFont().deriveFont(24f));
+        ceil.setText(Double.toString(defValues[i][j]));
+
         matrixCeils[i][j] = ceil;
         matrix.add(ceil);
       }
@@ -81,7 +83,12 @@ public class AutoMatrix extends FrameStyle {
     pot.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {
         saveOnMatrix();
-        double[][] potencia = Maths.matrizInversa(mat);
+        int pow = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa el grado de la potencia"));
+        double[][] potencia = mat;
+
+        for (int i = 0; i < pow - 1; i++)
+          potencia = Maths.multiplyMatrix(potencia, mat);
+
         new DrawMatrix(potencia);
       }
     });

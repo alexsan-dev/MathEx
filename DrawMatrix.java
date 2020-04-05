@@ -6,12 +6,14 @@ public class DrawMatrix extends FrameStyle {
 
   public DrawMatrix(double[][] mat) {
     int n = mat.length;
+    int m = mat[0].length;
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     setSize(200, 200);
+    setResizable(true);
     setLayout(new GridLayout(n, n));
 
     for (int i = 0; i < n; i++) {
-      for (int j = 0; j < n; j++) {
+      for (int j = 0; j < m; j++) {
         JTextField ceil = new JTextField();
         Double value = mat[i][j];
 

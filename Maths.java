@@ -81,6 +81,42 @@ public class Maths {
     return divs;
   }
 
+  // VALOR ABSOLUTO
+  static double diff(double n, double mid, int powS) {
+    if (n > pow(mid, powS))
+      return (n - pow(mid, powS));
+    else
+      return (pow(mid, powS) - n);
+  }
+
+  // N RAÍZ
+  public static double root(double n, int powS) {
+    // VALORES DE INICIO DE LOS DECIMALES
+    double start = 0, end = n;
+
+    // PERDICIÓN DE LOS DECIMALES
+    double e = 0.0000001;
+
+    // SUMAR HASTA ENCONTRAR
+    while (true) {
+      // VALOR MEDIO Y ERROR
+      double mid = (start + end) / 2;
+      double error = diff(n, mid, powS);
+
+      // SI EL VALOR MEDIO ES MENOR AL ERROR RETORNAR EL VALOR APROXIMADO
+      if (error <= e)
+        return mid;
+
+      // SI ES MAS GRANDE ASIGNAR EL FINAL
+      if (pow(mid, powS) > n)
+        end = mid;
+
+      // SINO ASIGNAR SU INICIO
+      else
+        start = mid;
+    }
+  }
+
   public static double inverse(Double a) {
     return (double) (1 / a);
   }
@@ -92,6 +128,21 @@ public class Maths {
 
   // ========== ALGEBRA ==========
   // CALCULAR ECUACIÓN CUADRÁTICA
+  public static double[] quadSystem(double[][] mat, double[][] b) {
+    if (mat.length == 1 && b.length == 1) {
+      double[] res = { b[0][0] / mat[0][0] };
+      return res;
+    } else {
+      double[][] inverse = matrizInversa(mat);
+      double[][] res = multiplyMatrix(inverse, b);
+
+      double[] resS = { res[0][0], res[1][0], res[2][0] };
+
+      return resS;
+
+    }
+  }
+
   public static Double[] quadEq(int a, int b, int c) {
     // VARIABLE DE SALIDA
     Double[] out = new Double[2];
@@ -199,6 +250,20 @@ public class Maths {
     return out;
   }
 
+  public static double[][] sumMatrix(double[][] a, double[][] b, boolean mode) {
+    int n = a.length;
+    int s = a[0].length;
+    double[][] out = new double[n][s];
+
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < s; j++) {
+        out[i][j] = a[i][j] + (b[i][j] * (mode ? 1 : -1));
+      }
+    }
+
+    return out;
+  }
+
   public static double[][] matrizInversa(double[][] matriz) {
     double det = 1 / determinante(matriz);
     double[][] nmatriz = matrizAdjunta(matriz);
@@ -247,6 +312,22 @@ public class Maths {
         nuevam[i][j] = matriz[j][i];
     }
     return nuevam;
+  }
+
+  public static double[][] multiplyMatrix(double[][] a, double[][] b) {
+    double[][] c = new double[a.length][b[0].length];
+    // VERIFICAR SI SE PUEDE MULTIPLICAR
+    if (a[0].length == b.length) {
+      for (int i = 0; i < a.length; i++) {
+        for (int j = 0; j < b[0].length; j++) {
+          for (int k = 0; k < a[0].length; k++) {
+            // SE MULTIPLICA CADA ELEMENTO
+            c[i][j] += a[i][k] * b[k][j];
+          }
+        }
+      }
+    }
+    return c;
   }
 
   public static double determinante(double[][] matriz) {

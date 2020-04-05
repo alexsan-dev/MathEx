@@ -21,5 +21,11 @@ public class Matrix extends FrameStyle {
         new OMatrix();
       }
     });
+
+    more.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        new TMatrix();
+      }
+    });
   }
 }
