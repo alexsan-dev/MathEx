@@ -10,7 +10,7 @@ public class Maths {
     return Integer.parseInt(cRound);
   }
 
-  // ============== ARITMÉTICA ==============
+  // ============== ARITMETICA ==============
   // SUMA
   public static double sum(Double a, Double b) {
     return a + b;
@@ -77,7 +77,7 @@ public class Maths {
       divs = (temp + (a / temp)) / 2;
     } while ((temp - divs) != 0);
 
-    // RETORNAR RAÍZ
+    // RETORNAR RAIZ
     return divs;
   }
 
@@ -127,7 +127,7 @@ public class Maths {
   }
 
   // ========== ALGEBRA ==========
-  // CALCULAR ECUACIÓN CUADRÁTICA
+  // CALCULAR ECUACION CUADRATICA
   public static double[] quadSystem(double[][] mat, double[][] b) {
     if (mat.length == 1 && b.length == 1) {
       double[] res = { b[0][0] / mat[0][0] };
@@ -180,7 +180,7 @@ public class Maths {
       out[1] = aRoot;
     }
 
-    // RETORNAR RAÍCES
+    // RETORNAR RAICES
     return out;
   }
 
@@ -192,7 +192,7 @@ public class Maths {
     // VALOR POR DEFECTO
     double[] out = { aRoot, cRoot };
 
-    // RETORNAR RAÍCES
+    // RETORNAR RAICES
     return out;
   }
 
@@ -202,7 +202,7 @@ public class Maths {
 
   }
 
-  // ============== TRIGONOMÉTRICAS ==============
+  // ============== TRIGONOMETRICAS ==============
   public static double sin(double a) {
     if (a == Double.NEGATIVE_INFINITY || !(a < Double.POSITIVE_INFINITY)) {
       return Double.NaN;
