@@ -1,5 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.event.*;
 
 public class OMatrix extends FrameStyle {
@@ -7,23 +9,34 @@ public class OMatrix extends FrameStyle {
 
   public OMatrix() {
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-    setSize(500, 100);
-    setLayout(new GridLayout(2, 3));
+    setSize(500, 150);
+
+    JPanel container = new JPanel();
+    container.setLayout(new GridLayout(2, 3));
+
+    container.setBorder(new EmptyBorder(20, 20, 20, 20));
 
     JLabel auto = new JLabel("Automático, dimension: ");
     JTextField autoF = new JTextField();
     JButton goAuto = new JButton("Ver operaciones");
+    goAuto.setBackground(new Color(21, 101, 192));
+    goAuto.setForeground(Color.white);
 
-    JLabel manual = new JLabel("Manual, 1, 2, 4, ...");
+    JLabel manual = new JLabel("Manual, 1, 2, 4, 5, 6 ...");
     JTextField manualF = new JTextField();
-    JButton goManual = new JButton("Ver operaciones");
 
-    add(auto);
-    add(autoF);
-    add(goAuto);
-    add(manual);
-    add(manualF);
-    add(goManual);
+    JButton goManual = new JButton("Ver operaciones");
+    goManual.setBackground(new Color(21, 101, 192));
+    goManual.setForeground(Color.white);
+
+    container.add(auto);
+    container.add(autoF);
+    container.add(goAuto);
+    container.add(manual);
+    container.add(manualF);
+    container.add(goManual);
+
+    add(container);
 
     goAuto.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {

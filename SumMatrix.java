@@ -23,8 +23,9 @@ public class SumMatrix extends FrameStyle {
   public SumMatrix(int dim) {
     // CONFIGURAR VENTANA
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-    setSize(350, 300);
-    setLayout(new GridLayout(2, 1));
+    setSize(200 * dim, 200);
+    setLayout(new GridBagLayout());
+    setResizable(true);
 
     // MATRICES
     JTextField[][] mA = new JTextField[dim][dim];
@@ -32,7 +33,12 @@ public class SumMatrix extends FrameStyle {
 
     // COMPONENTES
     JComboBox<String> oper = new JComboBox<String>();
+    oper.setFont(oper.getFont().deriveFont(20f));
+
     JButton calculate = new JButton("Calcular");
+    calculate.setFont(calculate.getFont().deriveFont(18f));
+    calculate.setBackground(new Color(21, 101, 192));
+    calculate.setForeground(Color.white);
 
     // PANELES
     JPanel panelA = new JPanel();
@@ -40,7 +46,7 @@ public class SumMatrix extends FrameStyle {
     JPanel matrixContainer = new JPanel();
 
     // ASIGNAR PROPIEDADES
-    matrixContainer.setLayout(new GridLayout(1, 3));
+    matrixContainer.setLayout(new FlowLayout());
     panelA.setLayout(new GridLayout(dim, dim));
     panelB.setLayout(new GridLayout(dim, dim));
 
@@ -54,6 +60,7 @@ public class SumMatrix extends FrameStyle {
         // CREAR CUADRO
         JTextField ceil = new JTextField();
         ceil.setHorizontalAlignment(SwingConstants.CENTER);
+        ceil.setPreferredSize(new Dimension(50, 50));
         ceil.setFont(ceil.getFont().deriveFont(24f));
 
         // ASIGNAR A LISTA
@@ -71,6 +78,7 @@ public class SumMatrix extends FrameStyle {
         JTextField ceil = new JTextField();
         ceil.setHorizontalAlignment(SwingConstants.CENTER);
         ceil.setFont(ceil.getFont().deriveFont(24f));
+        ceil.setPreferredSize(new Dimension(50, 50));
 
         // ASIGNAR A LISTA
         mB[i][j] = ceil;
@@ -93,8 +101,8 @@ public class SumMatrix extends FrameStyle {
     });
 
     // ASIGNAR ELEMENTOS
-    oper.addItem("SUMAR");
-    oper.addItem("RESTAR");
+    oper.addItem("+");
+    oper.addItem("-");
     matrixContainer.add(panelA);
     matrixContainer.add(oper);
     matrixContainer.add(panelB);

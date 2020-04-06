@@ -1,5 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.event.*;
 
 public class EquationSystem extends FrameStyle {
@@ -9,19 +11,19 @@ public class EquationSystem extends FrameStyle {
 
   public EquationSystem(int dim) {
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-    setSize(300, 300);
-    setLayout(new GridLayout(4, 1));
+    setSize(150 * dim, 200 * dim);
+    setResizable(true);
+    setLayout(new GridLayout(5, 1));
 
     // PANEL DE COEFICIENTES
     JPanel allContainer = new JPanel();
     allContainer.setLayout(new GridLayout(1, 3));
+    allContainer.setBorder(new EmptyBorder(0, 30, 0, 30));
 
     JPanel matrixPanel = new JPanel();
-    matrixPanel.setLayout(new GridLayout(dim, 1));
+    matrixPanel.setLayout(new GridLayout(dim, dim));
 
     // PANELES DE SEPARACIÓN
-    JPanel letters = new JPanel();
-    letters.setLayout(new GridLayout(1, dim));
     JPanel sumEquals = new JPanel();
     sumEquals.setLayout(new GridLayout(dim, 1));
 
@@ -30,7 +32,24 @@ public class EquationSystem extends FrameStyle {
     resPanel.setLayout(new GridLayout(dim, 1));
 
     JLabel respL = new JLabel();
+    Font font = respL.getFont().deriveFont(20f);
+    respL.setHorizontalAlignment(SwingConstants.CENTER);
+    respL.setVerticalAlignment(SwingConstants.CENTER);
+    respL.setFont(font);
+    respL.setOpaque(true);
+    respL.setBackground(new Color(50, 50, 50));
+    respL.setForeground(Color.white);
+
+    JLabel title = new JLabel("   Sistema de ecuaciones");
+    title.setFont(title.getFont().deriveFont(15f));
+
+    JLabel text = new JLabel("   Resultado: ");
+    text.setFont(text.getFont().deriveFont(15f));
+
     JButton calculate = new JButton("Calcular");
+    calculate.setFont(calculate.getFont().deriveFont(18f));
+    calculate.setBackground(new Color(21, 101, 192));
+    calculate.setForeground(Color.white);
 
     // MATRICES
     JTextField[][] matrixField = new JTextField[dim][dim];
@@ -42,6 +61,8 @@ public class EquationSystem extends FrameStyle {
         JTextField ceil = new JTextField();
         ceil.setHorizontalAlignment(SwingConstants.CENTER);
         ceil.setFont(ceil.getFont().deriveFont(24f));
+        ceil.setPreferredSize(new Dimension(50, 50));
+
         matrixField[i][j] = ceil;
         matrixPanel.add(ceil);
       }
@@ -49,24 +70,26 @@ public class EquationSystem extends FrameStyle {
       JTextField resFieldS = new JTextField();
       resFieldS.setHorizontalAlignment(SwingConstants.CENTER);
       resFieldS.setFont(resFieldS.getFont().deriveFont(24f));
+      resFieldS.setPreferredSize(new Dimension(50, 50));
 
       JLabel eq = new JLabel("=");
+      eq.setHorizontalAlignment(SwingConstants.CENTER);
+      eq.setFont(font);
       sumEquals.add(eq);
 
-      JLabel letterL = new JLabel(lettersChar[i]);
-
+      JLabel letterL = new JLabel(lettersChar[i] + " + ");
+      letterL.setFont(font);
       resField[i][0] = resFieldS;
       resPanel.add(resFieldS);
-
-      letters.add(letterL);
     }
 
     allContainer.add(matrixPanel);
     allContainer.add(sumEquals);
     allContainer.add(resPanel);
 
-    add(letters);
+    add(title);
     add(allContainer);
+    add(text);
     add(respL);
     add(calculate);
 
@@ -82,13 +105,18 @@ public class EquationSystem extends FrameStyle {
           res[i][0] = Double.parseDouble(resField[i][0].getText());
         }
 
-        double[] resolve = Maths.quadSystem(mat, res);
-        String textLabel = "";
+        try {
+          double[] resolve = Maths.quadSystem(mat, res);
+          String textLabel = "";
 
-        for (int i = 0; i < dim; i++)
-          textLabel += lettersChar[i] + " = " + resolve[i] + ", ";
+          for (int i = 0; i < dim; i++)
+            textLabel += lettersChar[i] + " = " + resolve[i] + ", ";
 
-        respL.setText(textLabel);
+          respL.setText(textLabel);
+        } catch (Exception e) {
+          JOptionPane.showMessageDialog(null, "El sistema no tiene solución.", "Error al resolver",
+              JOptionPane.ERROR_MESSAGE);
+        }
       }
     });
   }

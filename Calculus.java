@@ -29,5 +29,11 @@ public class Calculus extends FrameStyle {
         new Integrals();
       }
     });
+
+    derivate.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        new Derivate();
+      }
+    });
   }
 }

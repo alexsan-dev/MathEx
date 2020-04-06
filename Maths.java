@@ -132,11 +132,18 @@ public class Maths {
     if (mat.length == 1 && b.length == 1) {
       double[] res = { b[0][0] / mat[0][0] };
       return res;
+    } else if (mat.length == 2 && b.length == 2) {
+      double y = ((mat[1][0] * b[0][0]) - (mat[0][0] * b[1][0])) / ((mat[0][1] * mat[1][0]) - (mat[0][0] * mat[1][1]));
+      double x = (b[0][0] - (mat[0][1] * y)) / mat[0][0];
+      double[] res = { x, y };
+      return res;
     } else {
       double[][] inverse = matrizInversa(mat);
       double[][] res = multiplyMatrix(inverse, b);
+      double[] resS = new double[res.length];
 
-      double[] resS = { res[0][0], res[1][0], res[2][0] };
+      for (int i = 0; i < res.length; i++)
+        resS[i] = res[i][0];
 
       return resS;
 
@@ -158,16 +165,17 @@ public class Maths {
   }
 
   // FACTORIZACIÓN
-  public static int[] quadBin(int a, int b, int c) {
+  public static double[] quadBin(double a, double b, double c) {
     // VALOR POR DEFECTO
-    int[] out = { -1, -1 };
+    double[] out = { -1.0, -1.0 };
 
     // CUADRADOS
-    int aRoot = parseInt(sqrt(a));
-    int cRoot = parseInt(sqrt(b));
+    double aRoot = sqrt(a);
+    double cRoot = sqrt(c);
 
     // VERIFICAR SI ES UN BINOMIO CUADRADO PERFECTO
-    if ((2 * cRoot * aRoot) == b) {
+    if ((2 * aRoot * cRoot) == b) {
+
       out[0] = cRoot;
       out[1] = aRoot;
     }

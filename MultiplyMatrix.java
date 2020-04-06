@@ -8,14 +8,16 @@ public class MultiplyMatrix extends FrameStyle {
   public MultiplyMatrix(String dimA, String dimB) {
     // CONFIGURAR VENTANA
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-    setLayout(new GridLayout(2, 1));
-    setSize(300, 250);
+    setLayout(new GridBagLayout());
+    setResizable(true);
 
     // DIMENSIONES
     String[] dimsAS = dimA.split("x");
     int[] dimsA = { Integer.parseInt(dimsAS[0]), Integer.parseInt(dimsAS[1]) };
     String[] dimsBS = dimB.split("x");
     int[] dimsB = { Integer.parseInt(dimsBS[0]), Integer.parseInt(dimsBS[1]) };
+
+    setSize(150 * dimsA[0], 200);
 
     // MATRICES
     double[][] matA = new double[dimsA[0]][dimsA[1]];
@@ -29,10 +31,12 @@ public class MultiplyMatrix extends FrameStyle {
     mB.setLayout(new GridLayout(dimsB[0], dimsB[1]));
 
     JPanel matrixContainer = new JPanel();
-    matrixContainer.setLayout(new GridLayout(1, 3));
+    matrixContainer.setLayout(new FlowLayout());
 
     JLabel sign = new JLabel("x");
     JButton calculate = new JButton("Calcular");
+    sign.setFont(sign.getFont().deriveFont(20f));
+
     JTextField[][] matAFields = new JTextField[dimsA[0]][dimsA[1]];
     JTextField[][] matBFields = new JTextField[dimsA[0]][dimsA[1]];
 
@@ -42,6 +46,7 @@ public class MultiplyMatrix extends FrameStyle {
         JTextField ceil = new JTextField();
         ceil.setHorizontalAlignment(SwingConstants.CENTER);
         ceil.setFont(ceil.getFont().deriveFont(24f));
+        ceil.setPreferredSize(new Dimension(50, 50));
         matAFields[i][j] = ceil;
         mA.add(ceil);
       }
@@ -53,14 +58,18 @@ public class MultiplyMatrix extends FrameStyle {
         JTextField ceil = new JTextField();
         ceil.setHorizontalAlignment(SwingConstants.CENTER);
         ceil.setFont(ceil.getFont().deriveFont(24f));
+        ceil.setPreferredSize(new Dimension(50, 50));
         matBFields[i][j] = ceil;
         mB.add(ceil);
       }
     }
 
     // PROPIEDADES
-    sign.setFont(sign.getFont().deriveFont(24f));
-    calculate.setFont(calculate.getFont().deriveFont(24f));
+    sign.setFont(sign.getFont().deriveFont(20f));
+    calculate.setFont(calculate.getFont().deriveFont(20f));
+    calculate.setFont(calculate.getFont().deriveFont(18f));
+    calculate.setBackground(new Color(21, 101, 192));
+    calculate.setForeground(Color.white);
 
     // AGREGAR COMPONENTES
     matrixContainer.add(mA);

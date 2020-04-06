@@ -51,7 +51,7 @@ public class CubicDifference extends FrameStyle {
     result.setBackground(new Color(50, 50, 50));
     result.setForeground(Color.white);
 
-    JButton calculate = new JButton("CALCULAR");
+    JButton calculate = new JButton("Calcular");
     calculate.setFont(calculate.getFont().deriveFont(18f));
     calculate.setBackground(new Color(21, 101, 192));
     calculate.setForeground(Color.white);

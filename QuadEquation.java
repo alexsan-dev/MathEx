@@ -7,27 +7,39 @@ public class QuadEquation extends FrameStyle {
 
   public QuadEquation() {
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-    setName("MathX - Algebra");
-    setSize(300, 200);
-    setLayout(new GridLayout(3, 1));
+    setSize(300, 300);
+    setLayout(new GridLayout(5, 1));
+    setResizable(true);
 
     // COMPONENTES
+
+    JLabel title = new JLabel("   Ecuación cuadrática");
+    title.setFont(title.getFont().deriveFont(15f));
+
+    JLabel text = new JLabel("   Resultado: ");
+    text.setFont(text.getFont().deriveFont(15f));
 
     JTextField a = new JTextField();
     Font font = a.getFont().deriveFont(24f);
     a.setFont(font);
+    a.setHorizontalAlignment(SwingConstants.CENTER);
+    a.setPreferredSize(new Dimension(50, 50));
 
     JLabel x2 = new JLabel("x² + ");
     x2.setFont(font);
 
     JTextField b = new JTextField();
     b.setFont(font);
+    b.setHorizontalAlignment(SwingConstants.CENTER);
+    b.setPreferredSize(new Dimension(50, 50));
 
     JLabel x = new JLabel("x + ");
     x.setFont(font);
 
     JTextField c = new JTextField();
-    c.setFont(font)
+    c.setFont(font);
+    c.setHorizontalAlignment(SwingConstants.CENTER);
+    c.setPreferredSize(new Dimension(50, 50));
 
     JLabel result = new JLabel();
     result.setHorizontalAlignment(SwingConstants.CENTER);
@@ -40,15 +52,10 @@ public class QuadEquation extends FrameStyle {
     JPanel mainline = new JPanel();
     mainline.setLayout(new FlowLayout());
 
-    JPanel secline = new JPanel();
-    secline.setLayout(new FlowLayout());
-
     JButton calculate = new JButton("Calcular");
     calculate.setFont(calculate.getFont().deriveFont(18f));
     calculate.setBackground(new Color(21, 101, 192));
     calculate.setForeground(Color.white);
-
-
 
     mainline.add(a);
     mainline.add(x2);
@@ -56,10 +63,10 @@ public class QuadEquation extends FrameStyle {
     mainline.add(x);
     mainline.add(c);
 
-    secline.add(result);
-
+    add(title);
     add(mainline);
-    add(secline);
+    add(text);
+    add(result);
     add(calculate);
 
     calculate.addActionListener(new ActionListener() {
@@ -69,8 +76,7 @@ public class QuadEquation extends FrameStyle {
         int cs = Integer.parseInt(c.getText());
         Double[] results = Maths.quadEq(as, bs, cs);
 
-        x0f.setText(results[0].toString());
-        x1f.setText(results[1].toString());
+        result.setText("x = " + results[0] + ", x = " + results[1]);
       }
     });
   }

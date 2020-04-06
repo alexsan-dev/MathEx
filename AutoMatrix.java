@@ -19,7 +19,7 @@ public class AutoMatrix extends FrameStyle {
 
   public AutoMatrix(int dim, double[][] defValues) {
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-    setSize(300, 200);
+    setSize(320, 200);
     setLayout(new GridLayout(1, 2));
     setResizable(true);
 
@@ -30,9 +30,25 @@ public class AutoMatrix extends FrameStyle {
     matrixCeils = new JTextField[dim][dim];
 
     JButton trans = new JButton("Traspuesta");
+    Font font = trans.getFont().deriveFont(20f);
+    trans.setFont(font);
+    trans.setBackground(new Color(21, 101, 192));
+    trans.setForeground(Color.white);
+
     JButton inversa = new JButton("Inversa");
+    inversa.setFont(font);
+    inversa.setBackground(new Color(21, 101, 192));
+    inversa.setForeground(Color.white);
+
     JButton det = new JButton("Determinante");
+    det.setFont(font);
+    det.setBackground(new Color(21, 101, 192));
+    det.setForeground(Color.white);
+
     JButton pot = new JButton("Potencia");
+    pot.setFont(font);
+    pot.setBackground(new Color(21, 101, 192));
+    pot.setForeground(Color.white);
 
     mat = new double[dim][dim];
     dims = dim;

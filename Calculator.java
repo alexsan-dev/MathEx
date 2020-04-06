@@ -48,10 +48,16 @@ public class Calculator extends FrameStyle {
         out = Maths.mult(x0, x1);
         break;
       case 3:
-        out = Maths.div(x0, x1);
+        if (x1 == 0)
+          JOptionPane.showMessageDialog(null, "Division por 0", "Error al calcular", JOptionPane.ERROR_MESSAGE);
+        else
+          out = Maths.div(x0, x1);
         break;
       case 4:
-        out = Maths.sqrt(x0);
+        if (x0.toString().contains("-"))
+          JOptionPane.showMessageDialog(null, "Raíz imaginaria", "Error al calcular", JOptionPane.ERROR_MESSAGE);
+        else
+          out = Maths.sqrt(x0);
         break;
       case 5:
         out = Maths.fact(Maths.parseInt(x0));
@@ -60,7 +66,10 @@ public class Calculator extends FrameStyle {
         out = Maths.pow(x0, Maths.parseInt(x1));
         break;
       case 7:
-        out = Maths.inverse(x0);
+        if (x0 == 0)
+          JOptionPane.showMessageDialog(null, "Division por 0", "Error al calcular", JOptionPane.ERROR_MESSAGE);
+        else
+          out = Maths.inverse(x0);
         break;
       case 8:
         out = Maths.negative(x0);
@@ -125,6 +134,9 @@ public class Calculator extends FrameStyle {
     JButton clear = new JButton("CLS");
     JButton favorite = new JButton("S");
     JButton equals = new JButton("=");
+    equals.setFont(equals.getFont().deriveFont(18f));
+    equals.setBackground(new Color(21, 101, 192));
+    equals.setForeground(Color.white);
 
     // AGREGAR COMPONENTES
     c.gridx = 0;
